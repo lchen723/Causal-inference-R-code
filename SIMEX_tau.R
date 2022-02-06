@@ -60,12 +60,18 @@ vt = rbind(vt,colMeans(result[[psi]]))
 
 }
 
+ 
+##  quadratic extrapolant
 B = cbind(1,Psi,Psi^2)
-
 beta = solve(t(B)%*%B) %*% (t(B)%*%vt)
-
 ext = c(1,-1,1)
 
+##  linear extrapolant
+B = cbind(1,Psi)
+beta = solve(t(B)%*%B) %*% (t(B)%*%vt)
+ext = c(1,-1)
+ 
+ 
 output = ext %*%beta
 
 return(output)
