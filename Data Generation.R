@@ -11,8 +11,8 @@ DATA = NULL
 
 n = 400       # sample size    ## warnings would happen if n is "small" enough, e.g., n = 100
 m = 500        # num of repitition of simulation
-px = 10      # dim of parameters
-pz = 10
+px = 15      # dim of parameters
+pz = 15
 p = px + pz
 
 #### process of parameter
@@ -68,7 +68,18 @@ g_link = X%*%gamma_X + Z%*%gamma_Z
 e = 1/(1+exp(-g_link))         # pass through an inv-logit function
 #e =  1 - exp(-exp(g_link))     # complement log-log model form
 T = rbinom(n,1,e)
+  
+#### M1
 Y = T + abs(X%*%gamma_X + Z%*%gamma_Z) + rnorm(n,0,1)
+#######
+
+#### M2
+#T = rbinom(n,1,e)
+#pi = 1/(1+exp(-(T+g_link)))
+#Y = rbinom(n,1,pi)
+#######  
+  
+  
 
 
 #data = cbind(T,X,Z)    # true data frame
