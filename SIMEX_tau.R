@@ -67,9 +67,9 @@ beta = solve(t(B)%*%B) %*% (t(B)%*%vt)
 ext = c(1,-1,1)
 
 ##  linear extrapolant
-B = cbind(1,Psi)
-beta = solve(t(B)%*%B) %*% (t(B)%*%vt)
-ext = c(1,-1)
+#B = cbind(1,Psi)
+#beta = solve(t(B)%*%B) %*% (t(B)%*%vt)
+#ext = c(1,-1)
  
  
 output = ext %*%beta
